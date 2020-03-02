@@ -4,7 +4,7 @@ import pytest
 from page.app import App
 
 
-class TestSearch():
+class TestSearch(object):
     def setup(self):
         self.main = App().start().main()
 

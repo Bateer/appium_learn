@@ -2,19 +2,18 @@
 # Author: Yu
 from appium.webdriver import webdriver
 from appium.webdriver import WebElement
+from appium.webdriver.common.mobileby import MobileBy
 from appium.webdriver.webdriver import WebDriver
 
+from page.base_page import Base_page
 from page.search import Search
 
 
-class Main_page(object):
-    _driver: webdriver
-    def __init__(self, driver: WebDriver=None):
-        self._driver = driver
+class Main_page(Base_page):
 
     def goto_search_page(self):
-        self._driver.find_element_by_id("tv_search").click()
-        return Search()
+        self.find(MobileBy.ID, "tv_search").click()
+        return Search(self._driver)
 
     def goto_stocks(self):
         pass
