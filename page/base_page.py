@@ -34,6 +34,7 @@ class Base_page(object):
             #     self._driver.find_element(locator, value)
             return element
         except Exception as e:
+            # 利用黑名单中的元素遍历出来在页面中找，找到就点击掉，再递归重新找需要的元素
             if self._error_count > self._error_max:
                 raise e
             self._error_count += 1

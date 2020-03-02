@@ -26,6 +26,7 @@ class App(Base_page):
             self._driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
             self._driver.implicitly_wait(5)
         else:
+            # 如果已经有驱动了，使用start_activity方法启动
             self._driver.start_activity(self._package, self._activity)
         return self
 
