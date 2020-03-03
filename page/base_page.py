@@ -45,3 +45,19 @@ class Base_page(object):
                     elements[0].click()
                     return self.find(locator, value)
             raise e
+
+    def text(self, key):
+        return (By.XPATH, "//*[@text='%s']" % key)
+
+    def find_by_text(self, key):
+        return self.find(self.text(key))
+
+    def find_and_get_text(func):
+        def wrapper(self, *args, **kwargs):
+            locator = func(self)
+            element = self.find(locator)
+            result = element.text
+            return result
+        return wrapper
+
+
