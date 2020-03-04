@@ -3,6 +3,13 @@
 from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 import logging
+import os
+
+
+def dir_path(filename, filepath="data"):
+    dir_path_data = os.path.join((os.path.dirname(os.path.dirname(__file__))), filepath, filename)
+
+    return dir_path_data
 
 
 class Base_page(object):
@@ -52,6 +59,7 @@ class Base_page(object):
     def find_by_text(self, key):
         return self.find(self.text(key))
 
+    # 找到该元素，获取该按钮的文本装饰器
     def find_and_get_text(func):
         def wrapper(self, *args, **kwargs):
             locator = func(self)
@@ -59,5 +67,7 @@ class Base_page(object):
             result = element.text
             return result
         return wrapper
+
+    # 添加data公用路径
 
 
