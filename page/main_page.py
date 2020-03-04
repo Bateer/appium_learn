@@ -7,6 +7,7 @@ from appium.webdriver.webdriver import WebDriver
 
 from page.base_page import Base_page
 from page.search import Search
+from page.stocks import Stocks
 
 
 class Main_page(Base_page):
@@ -15,8 +16,10 @@ class Main_page(Base_page):
         self.find(MobileBy.ID, "tv_search").click()
         return Search(self._driver)
 
+    # 进入行情模块中测试
     def goto_stocks(self):
-        pass
+        self.find(MobileBy.XPATH, '//*[@text="行情"]').click()
+        return Stocks(self._driver)
 
     def goto_trade(self):
         pass
