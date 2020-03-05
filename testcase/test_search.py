@@ -11,13 +11,13 @@ class TestSearch(object):
         self.main = App().start().main()
 
     # 进行数据驱动
-    # @pytest.mark.parametrize(("key", "stock_type", "price"),
-    #                          yaml.safe_load(open(dir_path(filename='search.yaml'))))
-    # def test_search(self, key, stock_type, price):
-    #     assert self.main.goto_search_page().search(key).get_price(stock_type) > price
-    #
-    # def test_select(self):
-    #     assert "已添加" in self.main.goto_search_page().search("jd").add_select().get_message()
+    @pytest.mark.parametrize(("key", "stock_type", "price"),
+                             yaml.safe_load(open(dir_path(filename='search.yaml'))))
+    def test_search(self, key, stock_type, price):
+        assert self.main.goto_search_page().search(key).get_price(stock_type) > price
+
+    def test_select(self):
+        assert "已添加" in self.main.goto_search_page().search("jd").add_select().get_message()
 
     def test_selected_stocks(self):
         self.main.goto_stocks().one_add_selected().stocks_text_write_yaml()
