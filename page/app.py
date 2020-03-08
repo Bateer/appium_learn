@@ -19,7 +19,7 @@ class App(Base_page):
         if self._driver is None:
             caps = {}
             caps["platformName"] = "android"
-            caps["deviceName"] = "hogwarts"
+            caps["deviceName"] = "Ranger_IDE"
             caps["appPackage"] = _package
             caps["appActivity"] = _activity
             caps["chromedriverExecutableDir"] = "D:\PyProject\chromeDriver"

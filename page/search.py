@@ -29,7 +29,8 @@ class Search(Base_page):
         element.click()
         return self
 
-    @Base_page.find_and_get_text
     def get_message(self):
         locator = (By.ID, "followed_btn")
-        return locator
+        element = self.find(locator)
+        result = element.text
+        return result
